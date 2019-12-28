@@ -1,0 +1,10 @@
+#LoginFormContainer {
+    display: flex;
+    /* align-content: center;
+    align-items: center; */
+    justify-content: center;
+    justify-items: center;
+    height: inherit;
+    width: 100vw;
+    padding-top: 20vh;
+}

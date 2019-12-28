@@ -1,0 +1,11 @@
+#nav{
+    display: flex;
+    flex-flow: row nowrap;
+    height: 10vh;
+    vertical-align: middle;
+    align-content: space-evenly;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    background-color: #121212;
+}
