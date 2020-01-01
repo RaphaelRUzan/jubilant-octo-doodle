@@ -1,21 +1,27 @@
 /* form starting stylings ------------------------------- */
-.group 			  { 
-    position:relative; 
-    margin-bottom:45px; 
-  }
+.group 			   {
+  position: relative;
+  margin-bottom: 45px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
   input 				{
     font-size:18px;
     padding:10px 10px 10px 5px;
     display:block;
     width:300px;
     border:none;
-    border-bottom:1px solid #ffffff;
+    border-bottom:1px solid #333;
   }
   input:focus 		{ outline:none; }
   
   /* LABEL ======================================= */
   label 				 {
-    columns: #ffffff;; 
+    columns: #333;; 
     font-size:18px;
     font-weight:normal;
     position:absolute;
@@ -31,7 +37,7 @@
   input:focus ~ label, input:valid ~ label 		{
     top:-20px;
     font-size:14px;
-    color:#ffffff;
+    color:#333;
   }
   
   /* BOTTOM BARS ================================= */
@@ -42,7 +48,7 @@
     width:0;
     bottom:1px; 
     position:absolute;
-    background: #FC5F45; 
+    background: #0F0; 
     transition:0.2s ease all; 
     -moz-transition:0.2s ease all; 
     -webkit-transition:0.2s ease all;
@@ -65,7 +71,7 @@
     height:60%; 
     width:100px; 
     top:25%; 
-    left:0;
+    left:15%;
     pointer-events:none;
     opacity:0.5;
   }
@@ -79,14 +85,14 @@
   
   /* ANIMATIONS ================ */
   @-webkit-keyframes inputHighlighter {
-      from { background:#FC5F45; }
+      from { background:#0F0; }
     to 	{ width:0; background:transparent; }
   }
   @-moz-keyframes inputHighlighter {
-      from { background:#FC5F45; }
+      from { background:#0F0; }
     to 	{ width:0; background:transparent; }
   }
   @keyframes inputHighlighter {
-      from { background:#FC5F45; }
+      from { background:#0F0; }
     to 	{ width:0; background:transparent; }
   }

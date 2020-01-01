@@ -1,11 +1,11 @@
 import React, { Component }  from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom';
 import Signup from './Signup';
 import Login from './Login';
 import Nav from './Nav';
-import Home from './Home';
+import Home from './containers/Home';
+import NotFound from './containers/NotFound';
 
 class App extends Component {
   
@@ -21,9 +21,10 @@ class App extends Component {
         <Nav/>
         <div className="App">
           <Switch>
+            <Route path="/" exact component={Home}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/login" component={Login}/>
-            <Route path="*" component={Home}/>
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>

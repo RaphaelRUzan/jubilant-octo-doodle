@@ -47,5 +47,13 @@
 }
 
 .UpLogButton {
-  background-color: #FC5F45;
+  background-color: #0F0;
+}
+
+.App {
+  margin-top: 15px;
+}
+
+.App .navbar-brand {
+  font-weight: bold;
 }

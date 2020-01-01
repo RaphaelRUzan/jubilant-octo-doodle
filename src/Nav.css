@@ -1,4 +1,4 @@
-#nav{
+/* #nav{
     display: flex;
     flex-flow: row nowrap;
     height: 10vh;
@@ -8,8 +8,16 @@
     justify-content: space-evenly;
     width: 100vw;
     background-color: #121212;
-}
+    padding-top: 15px;
+} */
 
 #Logo {
-    height: 3vw;
+    height: 2em;
+    /* padding-bottom: 2vh; */
+    position: relative;
+    bottom: .5em;
+}
+  
+#nav .navbar-brand {
+font-weight: bold;
 }
