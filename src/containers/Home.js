@@ -1,18 +1,81 @@
-import React from 'react';
-import Textinput from '../Textinput';
-import Feed from '../Feed';
+import React, { useState, useEffect } from "react";
 import "./Home.css";
+import { API } from "aws-amplify";
+import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
-class Homepage extends React.Component {
-    render() {
-     return (
-        <div>
-            <h1><code>Search for a task record.</code></h1>
-            <Textinput/>
-            <Feed/>
-        </div>
-     );   
+export default function Home(props) {
+  const [notes, setNotes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function onLoad() {
+      if (!props.isAuthenticated) {
+        return;
+      }
+  
+      try {
+        const notes = await loadNotes();
+        setNotes(notes);
+      } catch (e) {
+        alert(e);
+      }
+  
+      setIsLoading(false);
     }
-}
+  
+    onLoad();
+  }, [props.isAuthenticated]);
+  
+  function loadNotes() {
+    return API.get("notes", "/notes");
+  }
+  
 
-export default Homepage;
+  function renderNotesList(notes) {
+    return [{}].concat(notes).map((note, i) =>
+      i !== 0 ? (
+        <LinkContainer key={note.noteId} to={`/notes/${note.noteId}`}>
+          <ListGroupItem header={note.content.trim().split("\n")[0]}>
+            {"Created: " + new Date(note.createdAt).toLocaleString()}
+          </ListGroupItem>
+        </LinkContainer>
+      ) : (
+        <LinkContainer key="new" to="/notes/new">
+          <ListGroupItem>
+            <h4>
+              <b>{"\uFF0B"}</b> Create a new note
+            </h4>
+          </ListGroupItem>
+        </LinkContainer>
+      )
+    );
+  }
+  
+
+  function renderLander() {
+    return (
+      <div className="lander">
+        <h1>Taskr</h1>
+        <p>Best to keep a record.</p>
+      </div>
+    );
+  }
+
+  function renderNotes() {
+    return (
+      <div className="notes">
+        <PageHeader>Your Notes</PageHeader>
+        <ListGroup>
+          {!isLoading && renderNotesList(notes)}
+        </ListGroup>
+      </div>
+    );
+  }
+
+  return (
+    <div className="Home">
+      {props.isAuthenticated ? renderNotes() : renderLander()}
+    </div>
+  );
+}

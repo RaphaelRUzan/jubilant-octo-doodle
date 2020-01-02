@@ -1,8 +1,8 @@
-#LoginFormContainer {
+/* #LoginFormContainer {
     display: flex;
     /* align-content: center;
     align-items: center; */
-    justify-content: center;
+    /* justify-content: center;
     justify-items: center;
     height: inherit;
     width: 100vw;
@@ -16,4 +16,15 @@ input.form-control {
 }
 input[type=file] {
   width: 100%;
+} */ 
+
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
 }
